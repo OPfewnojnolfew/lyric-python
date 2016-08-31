@@ -1,0 +1,6 @@
+{% extends "main.html" %} {% block content %}
+<h1>Index</h1>
+<p class="important">
+    {% for menu in menus %} {{ menu.NAME_ }} {% endfor %}
+</p>
+{% endblock %}
