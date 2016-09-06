@@ -7,7 +7,7 @@
             "request": "launch",
             "stopOnEntry": true,
             "pythonPath": "${workspaceRoot}/publish/ENV/Scripts/python.exe",
-            "program": "${workspaceRoot}/publish/index.py",
+            "program": "${workspaceRoot}/publish/run.py",
             "debugOptions": [
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit",

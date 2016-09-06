@@ -1,0 +1,110 @@
+<?php
+include('./inc.php'); 
+$act = isset($_GET['a'])?$_GET['a']:false;
+if ($act) {
+    switch($act)
+{
+    case "login":
+    if($_POST['username']==$admin_name && $_POST['password']==$admin_pwd)
+    {
+        setCookie("admin",1,time()+86400*365,"/",""); 
+        echo header("location:index.php");
+    }
+    else
+    {
+        echo "<script>alert('用户名或者密码错误！');window.location='login.php';</script>";
+    }
+    break;
+    
+    case "logout":
+    setCookie("admin",0,time()+86400*365,"/","");
+    echo header("location:login.php"); 
+    break;
+}
+}
+
+?>
+    <!doctype html>
+    <html>
+
+    <head>
+        <title>
+            <?=$title?>
+        </title>
+        <meta charset="utf-8" />
+        <link rel="apple-touch-icon-precomposed" href="static/img/ico-startup-57x57.png" />
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
+        />
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="Description" content="<?=$description?>" />
+        <meta name="Keywords" content="<?=$keywords?>" />
+    </head>
+
+    <body>
+        <form action="?a=login" method="post" name="form">
+            <div class="container  customcontainer">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="panel panel-default boxtop">
+                            <div class="panel-heading">
+                                <h4 class="text-primary">后台管理系统</h4>
+                            </div>
+                            <div class="panel-body">
+
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <div class="col-sm-10 col-md-offset-1">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"> <i class="icon-leaf"></i>
+                                        </span>
+                                                <input type="text" class="form-control" name="username" id="username" placeholder="用户名"></div>
+                                        </div>
+                                        <br /><br />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-10 col-md-offset-1">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"> <i class="icon-key"></i>
+                                        </span>
+                                                <input type="password" class="form-control" name="password" id="password" placeholder="密码"></div>
+                                        </div>
+                                        <br /><br />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-10 col-md-offset-1">
+                                            <input class="btn btn-primary" type="submit" value="登录" id="submit" onclick="return check()" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <script>
+function check()
+{
+    if(document.form.username.value=='')
+    {
+        alert("请输入登录账号!");
+        document.form.username.focus();
+        return false;
+    }
+    if(document.form.password.value=='')
+    {
+        alert("请输入登录密码!");
+        document.form.password.focus();
+        return false;
+    }
+    return true;
+}
+</script>
+    </body>
+
+    </html>
