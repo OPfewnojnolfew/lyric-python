@@ -1,0 +1,10 @@
+{% extends "main.html" %} {% block content %}
+<div>
+    <from method="POST">
+        <input type="hidden" value="{{user.id}}" />
+        <label for="loginName">用户名:<input id="loginName" name="loginName" type="text" value="{{user.loginName}}"/></label>
+        <label for="password">密码:<input id="password" name="password" type="text" value="{{user.password}}" /></label>
+        <input type="submit" value="提交" />
+    </from>
+</div>
+{% endblock %}

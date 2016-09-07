@@ -9,3 +9,4 @@ admin = Blueprint(
 
 from . import index
 from . import login
+from . import user

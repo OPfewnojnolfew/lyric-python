@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 from assets import assets
 from admin import admin
 
@@ -13,15 +13,17 @@ login_manager = flask_login.LoginManager()
 
 login_manager.init_app(app)
 
+login_manager.login_view = 'admin.login'
+
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.getUser(user_id)
 
 
-@login_manager.unauthorized_handler
-def unauthorized_user(user_id):
-    return User.getUser(user_id)
+# @login_manager.unauthorized_handler
+# def unauthorized_user(user_id):
+#     return redirect(url_for('.login'))
 # @login_manager.user_loader
 # def user_loader(userName):
 #     return User.getUser(userName)
