@@ -15,7 +15,7 @@ def login():
         password = request.form['password']
         user = User.validUser(userName, password)
         if user == None:
-            return redirect(url_for('login'))
+            return redirect(url_for('.login'))
         flask_login.login_user(user)
         return redirect(url_for('.index'))
     else:
