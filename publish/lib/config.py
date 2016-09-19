@@ -3,4 +3,4 @@
 import ConfigParser
 
 config = ConfigParser.ConfigParser()
-config.read('config.ini')
+config.read('../config.ini')
