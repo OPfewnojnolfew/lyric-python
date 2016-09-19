@@ -36,7 +36,7 @@ class DB:
     conn = None
 
     def __init__(self):
-
+        print config.get('db', 'host')
         # connect to mysql
         self.conn = pymysql.connect(host=config.get('db', 'host'),
                                     port=config.getint('db', 'port'),
